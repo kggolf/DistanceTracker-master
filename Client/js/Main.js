@@ -109,7 +109,7 @@ var Globals = {
         lastDistanceTimeTemp = t;
 
         // find screen size (show biggest possible map for device)
-        var screenSize = window.innerWidth + "x" + window.innerHeight;
+        var screenSize = 351 + "x" + 251;
 
         // setup map
         var src = "http://maps.googleapis.com/maps/api/staticmap?size=" + screenSize + "&sensor=true&path=";
@@ -158,54 +158,4 @@ var Globals = {
 
         return d;
     }
-
-    function updateTime(dt) {
-        requestAnimationFrame(updateTime);
-
-        var t = Date.now() - Globals.startTime;
-        if (t === Globals.latestTime) return;
-        Globals.latestTime = t;
-
-        // calculate speed
-        var speed = 0;
-        var averageSpeed = 0;
-
-        if (Globals.cntUpdates > 1 && Globals.latestTime > 0 && dt > 0) {
-            averageSpeed = Math.round(Globals.totalDistance / Globals.latestTime * 1000000);
-            speed = Math.round(Globals.latestDistance / Globals.latestDistanceTime * 1000000);
-        }
-
-        speedElement.innerHTML = "Speed: " + speed + " km/h";
-        averageElement.innerHTML = "Average: " + averageSpeed + " km/h";
-
-        var time = new Date(t);
-
-        var hh = time.getHours() - 1;
-        if (hh < 10) hh = "0" + hh;
-        var mm = time.getMinutes();
-        if (mm < 10) mm = "0" + mm;
-        var ss = time.getSeconds();
-        if (ss < 10) ss = "0" + ss;
-        var ms = time.getMilliseconds() / 100 | 0;
-
-        timeElement.innerHTML = "Time: " + hh + ":" + mm + ":" + ss + "." + ms;
-    }
-
-    updateTime();
-
-    // debug: creates new positions at a specified interval
-    function createFakePositions(speedInMilliseconds) {
-        setInterval(function () {
-            if (Globals.cntUpdates === 0) return;
-
-            update({
-                coords: {
-                    latitude: path[Globals.cntUpdates - 1].latitude + Math.random() / 1000,
-                    longitude: path[Globals.cntUpdates - 1].longitude + Math.random() / 1000
-                }
-            })
-        }, speedInMilliseconds);
-    }
-
-    //createFakePositions(1000);
 })();
