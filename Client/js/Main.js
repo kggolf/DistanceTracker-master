@@ -15,7 +15,7 @@ var Globals = {
     var speedElement = document.getElementById('speed');
     var averageElement = document.getElementById('average');
     var map1 = document.getElementById('map1');
-    // comment 1 var map2 = document.getElementById('map2');
+    var map2 = document.getElementById('map2');
 
     var path = [];
     var latestPosition;
@@ -23,18 +23,18 @@ var Globals = {
 
     // setup two images that can fade from one to the other when new maps are loaded
     var visibleMap = map1;
-    // comment 2 var hiddenMap = map2;
+    var hiddenMap = map2;
 
     map1.addEventListener('load', function () {
         map1.style.opacity = 1;
         map1.style.transitionDelay = 0;
-        //comment 3 map2.style.opacity = 0;
-        //comment 4 map2.style.transitionDelay = "0.3s";
+        map2.style.opacity = 0;
+        map2.style.transitionDelay = "0.3s";
 
         visibleMap = map1;
-        //comment 5 hiddenMap = map2;
+        hiddenMap = map2;
     });
-    /* comment 6 map2.addEventListener('load', function () {
+    map2.addEventListener('load', function () {
         map2.style.opacity = 1;
         map2.style.transitionDelay = 0;
         map1.style.opacity = 0;
@@ -42,7 +42,7 @@ var Globals = {
 
         visibleMap = map2;
         hiddenMap = map1;
-    });*/
+    });
 
     // setup geolocation
     if (!navigator.geolocation) {
