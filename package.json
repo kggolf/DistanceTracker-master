@@ -1,0 +1,17 @@
+{
+    "name": "DistanceTracker",
+    "description": "HTML5 based running/biking/whatever tracker.",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/staunsholm/DistanceTracker.git"
+    },
+    "dependencies": {
+    },
+    "devDependencies": {
+        "grunt": "~0.4.1",
+        "grunt-contrib-uglify": "~0.2.2",
+        "grunt-shell": "~0.3.1",
+        "grunt-ssh": "~0.6.2",
+        "grunt-ftpscript": "~0.1.6"
+    }
+}
