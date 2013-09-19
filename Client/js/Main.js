@@ -7,9 +7,6 @@ var Globals = {
     latestDistanceTime: 0
 };
 
-//var requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame;
-
-//var devicePixelRatio = window.devicePixelRatio ? window.devicePixelRatio : 1;
 
 (function () {
     var resetTracking = document.getElementById('resetTracking');
